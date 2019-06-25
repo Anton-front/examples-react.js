@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  padding: 15px;
+}
+
+.todo-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: item;
+}
+
+.todo-list li {
+  position: relative;
+  counter-increment: item;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding: 10px 0 10px 25px;
+}
+
+.todo-list li::before {
+  content: counter(item);
+  font-weight: bold;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 10px;
+}
+
