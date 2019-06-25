@@ -26,9 +26,14 @@ class App extends Component {
 
   addNewItem(title) { 
     const allItems = this.state.todos.slice();
-    const lastId = allItems[allItems.length - 1].id;
+    let newId = 1;
+
+    if (allItems.length > 0) {
+      newId = allItems[allItems.length - 1].id + 1
+    }
+
     const newItem = {
-      "id": lastId + 1,
+      "id": newId,
       "title": title
     }
 
