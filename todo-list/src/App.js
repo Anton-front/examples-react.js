@@ -8,10 +8,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: []
+      todos: [],
+      inputValue: ''
     };
     this.removeItem = this.removeItem.bind(this);
     this.addNewItem = this.addNewItem.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -24,7 +26,14 @@ class App extends Component {
       })
   }
 
-  addNewItem(title) { 
+  handleChange(e) {
+    this.setState({
+      inputValue: e.target.value
+    });
+  }
+
+  addNewItem(e) {
+    e.preventDefault();
     const allItems = this.state.todos.slice();
     let newId = 1;
 
@@ -34,12 +43,12 @@ class App extends Component {
 
     const newItem = {
       "id": newId,
-      "title": title
+      "title": this.state.inputValue
     }
 
     allItems.push(newItem);
 
-    if (title !== '') {
+    if (this.state.inputValue !== '') {
       this.setState({
         todos: allItems
       })
@@ -47,7 +56,7 @@ class App extends Component {
   }
 
   removeItem(id) {
-    const newArr = this.state.todos.filter((obj) => (obj.id !== id));        
+    const newArr = this.state.todos.filter((obj) => (obj.id !== id));
     this.setState({
       todos: newArr
     })
@@ -57,8 +66,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>To do list</h1>
-        <InputControl
-          addNewItem={this.addNewItem} 
+        <InputControl 
+          onSubmit={this.addNewItem}
+          value={this.state.inputValue}
+          onChange={this.handleChange}
         />
         <ul className="todo-list">
           {this.state.todos.map((item) => 
