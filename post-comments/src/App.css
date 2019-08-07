@@ -1,0 +1,46 @@
+main {
+  padding: 20px 0;
+}
+
+.main-nav {
+  display: flex;
+}
+
+.main-nav a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+
+.post-item {
+  position: relative;
+}
+
+.post-item.MuiPaper-root {
+  background-color: #f2f2f2;
+}
+
+.post-item .num-post {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.post-item h6 {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.post-item .comments-link {
+  text-decoration: none;
+  background-color: #ff4400;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  line-height: 1;
+  display: inline-block;
+  padding: 5px 15px 7px;
+  margin: 5px;
+}
